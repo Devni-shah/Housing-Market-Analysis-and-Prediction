@@ -36,12 +36,12 @@ for column in categorical_columns_with_missing:
 
 numerical_imputer = SimpleImputer(strategy='mean')
 train_data[numerical_columns_with_missing] = numerical_imputer.fit_transform(train_data[numerical_columns_with_missing])
-
+```
 ### Model Training
 We split the dataset into training and validation sets using a custom function and trained various models using TensorFlow Decision Forests. The primary models we employed included:
 
-**Random Forest
-**Gradient Boosted Trees
+**Random Forest**
+**Gradient Boosted Trees**
 
 ```python
 import numpy as np
@@ -53,7 +53,7 @@ def split_dataset(dataset, test_ratio=0.30):
     return dataset.iloc[train_indices], dataset.iloc[test_indices]
 
 data_train, data_valid = split_dataset(train_data)
-
+```
 ### Results and Evaluation
 We evaluated the models using Root Mean Squared Error (RMSE) to determine the best performing model.
 ```python
@@ -62,8 +62,9 @@ from sklearn.metrics import mean_squared_error
 
 def calculate_rmse(y_true, y_pred):
     return np.sqrt(mean_squared_error(y_true, y_pred))
-
+```
 # RMSE Results
+```python
 rmse_results = {}
 for model in models:
     model.fit(train_df)
@@ -71,6 +72,6 @@ for model in models:
     y_true = data_valid['SalePrice'].values
     rmse = calculate_rmse(y_true, y_pred)
     rmse_results[type(model).__name__] = rmse
-
-RMSE for GBM: 24998
-RMSE for Random Forest: 23813
+```
+**RMSE for GBM:** 24998
+**RMSE for Random Forest:** 23813
