@@ -9,8 +9,7 @@ This project focuses on analyzing the housing market and predicting property pri
 - [Data Pre-Processing](#data-pre-processing)
 - [Model Training](#model-training)
 - [Results and Evaluation](#results-and-evaluation)
-- [Member Contributions](#member-contributions)
-- [Learnings](#learnings)
+
 
 ## Introduction
 Understanding housing market trends is crucial for buyers, sellers, and investors. Through meticulous data collection, processing, and analysis, this project aims to provide a comprehensive overview of housing sales trends and factors affecting property prices.
