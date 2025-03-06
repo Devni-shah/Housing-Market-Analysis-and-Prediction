@@ -4,6 +4,7 @@
 
 This project presents an end-to-end pipeline for predicting house sale prices using the Ames housing dataset. The overall objective is to develop a robust regression model that can accurately estimate sale prices based on a diverse range of property attributes. The project emphasizes thorough data preparation, detailed exploratory analysis, careful handling of missing values, and the application of advanced machine learning techniques. By doing so, the analysis not only produces accurate predictions but also provides insights into the key factors driving house prices, thereby supporting decision-making for stakeholders in the real estate market.
 
+---
 
 
 **Data Loading and Exploratory Data Analysis (EDA)**
@@ -21,6 +22,7 @@ A series of visualizations are then used to explore the data in depth. Histogram
 **Handling Missing Values**  
 Recognizing the importance of a clean dataset for accurate modeling, the project implements tailored imputation strategies for different types of features. Categorical variables with missing data are addressed by replacing the missing entries with a placeholder (e.g., “Unknown”), thereby preserving the categorical nature of the data while explicitly marking incomplete records. For numerical features, missing values are imputed using the mean value of each respective column. This dual approach ensures that the dataset remains both complete and statistically consistent, laying a solid foundation for subsequent model training.
 
+---
 
 
 **Model Training and Evaluation**
@@ -34,6 +36,7 @@ The project utilizes advanced machine learning models from TensorFlow Decision F
 **Retraining on Full Data**  
 Once the best-performing model is identified, it is retrained using the full training dataset. This step ensures that the model leverages all available information before being applied to new, unseen data.
 
+---
 
 
 **Test Data Processing and Prediction**
