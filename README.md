@@ -1,76 +1,41 @@
 # Housing Market Analysis and Prediction
 
-## Overview
-This project focuses on analyzing the housing market and predicting property prices using machine learning techniques. Conducted by Group 18 for the BUDT 758J course, we leverage a dataset of housing sales to uncover trends and relationships that affect property pricing.
+**Overview**  
+This repository presents a detailed project dedicated to forecasting high booking rates for Airbnb listings using sophisticated machine learning techniques. By leveraging historical booking data and extensive feature engineering, the project seeks to uncover underlying patterns that drive successful listings. The ultimate goal is to offer actionable insights that empower Airbnb hosts to enhance listing performance, assist guests in discovering high-quality, available properties, and support Airbnb in refining its recommendation systems to boost overall satisfaction.
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Code and Methods Used](#code-and-methods-used)
-- [Data Pre-Processing](#data-pre-processing)
-- [Model Training](#model-training)
-- [Results and Evaluation](#results-and-evaluation)
+**Objectives**  
+The project is designed to create a predictive model that serves multiple purposes:  
+- **For Hosts:** Enable optimization of listings by identifying key factors—such as pricing, room type, and amenity offerings—that increase revenue and occupancy rates.  
+- **For Guests:** Help pinpoint listings with high availability and superior quality, enhancing the overall booking experience.  
+- **For the Platform:** Support Airbnb in improving its recommendation algorithms and operational efficiency, ultimately driving better customer satisfaction and retention.  
+- **For Decision-Making:** Provide stakeholders with clear, data-driven insights that guide strategic decisions in the competitive hospitality market.
 
+**Methodology**  
+The project follows a structured approach that includes several critical stages:
 
-## Introduction
-Understanding housing market trends is crucial for buyers, sellers, and investors. Through meticulous data collection, processing, and analysis, this project aims to provide a comprehensive overview of housing sales trends and factors affecting property prices.
+1. **Data Preparation:**  
+   - **Cleaning and Preprocessing:** The initial step involved a thorough cleaning of the dataset by addressing missing values, eliminating duplicates, and standardizing categorical variables.  
+   - **Feature Engineering:** New features were created to capture the nuances of Airbnb listings. These included categorizing property types, counting the number of amenities, and deriving metrics that reflect host performance and listing popularity.
 
-## Code and Methods Used
-### Exploratory Data Analysis - Visualizations
-We conducted an in-depth examination of the dataset using various statistical techniques and visualization tools, including:
-- Histograms
-- Scatter Plots
-- Box Plots
+2. **Feature Selection and Processing:**  
+   - **Key Variable Identification:** Variables such as room type, price, location, and host attributes were selected based on their relevance to booking rates.  
+   - **Text Data Processing:** Descriptive information from listings was processed using techniques like one-hot encoding and frequency counts, which helped in extracting qualitative insights and converting them into usable numerical data.  
+   - **Correlation and Importance Analysis:** Statistical methods were employed to determine the impact of each feature on booking rates, ensuring that the model focuses on the most influential predictors.
 
-These visualizations allowed us to identify correlations, outliers, and trends that informed our analysis.
+3. **Model Development:**  
+   - **Algorithm Selection:** The Random Forest algorithm was chosen due to its robustness in handling complex, nonlinear interactions among features.  
+   - **Hyperparameter Tuning:** Extensive tuning of model parameters was conducted to achieve an optimal balance between accuracy and generalizability.  
+   - **Iterative Refinement:** The model underwent several iterations, incorporating cross-validation techniques to validate performance and mitigate overfitting issues.
 
-### Data Pre-Processing
-To ensure data integrity, we handled missing values:
-- **Categorical Columns:** Imputed with 'Unknown'
-- **Numerical Columns:** Imputed with the mean value
+4. **Evaluation and Validation:**  
+   - **Data Splitting:** The dataset was divided into training and validation sets to rigorously test the model’s predictive accuracy.  
+   - **Performance Metrics:** Evaluation was carried out using metrics such as the Area Under the Curve (AUC), which provided insights into both the model’s accuracy and its ability to generalize to new data.  
+   - **Sensitivity Analysis:** Additional analyses were performed to assess the contribution of individual features to the model’s predictions, ensuring that the insights generated are actionable and reliable.
 
-```python
-# Imputing missing values
-for column in categorical_columns_with_missing:
-    train_data[column].fillna('Unknown', inplace=True)
+**Findings**  
+- **Determinants of Booking Rates:** The analysis revealed that factors like competitive pricing, the categorization of room types, and the comprehensive listing of amenities are critical in driving booking rates. Listings that effectively balance these elements tend to attract more bookings.  
+- **Model Performance:** While the Random Forest model achieved high accuracy on the training set, it also highlighted the challenge of overfitting. This indicates that, although the model is adept at capturing existing patterns, further refinement is necessary to maintain performance on new, unseen data.  
+- **Strategic Insights:** Beyond prediction, the project delivers actionable recommendations for hosts. By optimizing listing attributes based on the identified key drivers, hosts can improve occupancy rates and revenue. Additionally, the insights can inform broader platform strategies aimed at enhancing the overall user experience.
 
-numerical_imputer = SimpleImputer(strategy='mean')
-train_data[numerical_columns_with_missing] = numerical_imputer.fit_transform(train_data[numerical_columns_with_missing])
-```
-### Model Training
-We split the dataset into training and validation sets using a custom function and trained various models using TensorFlow Decision Forests. The primary models we employed included:
-
-**Random Forest**
-**Gradient Boosted Trees**
-
-```python
-import numpy as np
-
-def split_dataset(dataset, test_ratio=0.30):
-    num_test = int(test_ratio * len(dataset))
-    test_indices = np.random.choice(len(dataset), num_test, replace=False)
-    train_indices = np.setdiff1d(np.arange(len(dataset)), test_indices)
-    return dataset.iloc[train_indices], dataset.iloc[test_indices]
-
-data_train, data_valid = split_dataset(train_data)
-```
-### Results and Evaluation
-We evaluated the models using Root Mean Squared Error (RMSE) to determine the best performing model.
-```python
-
-from sklearn.metrics import mean_squared_error
-
-def calculate_rmse(y_true, y_pred):
-    return np.sqrt(mean_squared_error(y_true, y_pred))
-```
-# RMSE Results
-```python
-rmse_results = {}
-for model in models:
-    model.fit(train_df)
-    y_pred = model.predict(valid_df)
-    y_true = data_valid['SalePrice'].values
-    rmse = calculate_rmse(y_true, y_pred)
-    rmse_results[type(model).__name__] = rmse
-```
-**RMSE for GBM:** 24998
-**RMSE for Random Forest:** 23813
+**Conclusion**  
+This project successfully demonstrates the application of machine learning to predict Airbnb booking rates, providing a robust framework for deriving actionable insights. By integrating comprehensive data cleaning, innovative feature engineering, and advanced modeling techniques, the project not only forecasts booking rates but also offers valuable recommendations for listing optimization. Although challenges such as overfitting remain, the insights obtained pave the way for future improvements, such as incorporating regularization techniques and exploring additional data sources. Overall, this work lays a strong foundation for utilizing data-driven approaches to enhance decision-making and operational strategies within the Airbnb ecosystem, ultimately contributing to a more efficient and satisfying experience for hosts and guests alike.
