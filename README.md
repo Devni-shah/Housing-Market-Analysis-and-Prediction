@@ -1,12 +1,12 @@
 # Housing Market Analysis and Prediction
----
-### Introduction
+
+**Introduction**
 
 This project presents an end-to-end pipeline for predicting house sale prices using the Ames housing dataset. The overall objective is to develop a robust regression model that can accurately estimate sale prices based on a diverse range of property attributes. The project emphasizes thorough data preparation, detailed exploratory analysis, careful handling of missing values, and the application of advanced machine learning techniques. By doing so, the analysis not only produces accurate predictions but also provides insights into the key factors driving house prices, thereby supporting decision-making for stakeholders in the real estate market.
 
----
 
-### Data Loading and Exploratory Data Analysis (EDA)
+
+**Data Loading and Exploratory Data Analysis (EDA)**
 
 **Data Ingestion and Initial Inspection**  
 The project begins with loading the training dataset, where non-essential columns such as the unique identifier are removed. An initial review of the data reveals a mixture of numerical and categorical features spread across 80 columns. A systematic check for missing values shows that certain features—such as those related to property attributes like alley access, pool quality, or miscellaneous features—contain a significant number of missing entries. This early step is critical for understanding the overall data quality and forms the basis for the subsequent imputation process.
@@ -14,16 +14,16 @@ The project begins with loading the training dataset, where non-essential column
 **Visual Insights into Data Distribution**  
 A series of visualizations are then used to explore the data in depth. Histograms reveal the distribution of sale prices, highlighting aspects like skewness and spread. Scatter plots combined with regression lines illustrate the strong relationship between the above-ground living area and sale prices, suggesting that larger living areas typically command higher prices. Boxplots help identify outliers within numerical features, while subplots of various numerical variables provide an overview of the data distributions across multiple features. Additionally, time series analyses demonstrate how the overall condition of houses has evolved over time, and bar charts offer a view of the categorical distribution, such as the variety of roof styles present in the dataset.
 
----
 
-### Data Processing and Imputation
+
+**Data Processing and Imputation**
 
 **Handling Missing Values**  
 Recognizing the importance of a clean dataset for accurate modeling, the project implements tailored imputation strategies for different types of features. Categorical variables with missing data are addressed by replacing the missing entries with a placeholder (e.g., “Unknown”), thereby preserving the categorical nature of the data while explicitly marking incomplete records. For numerical features, missing values are imputed using the mean value of each respective column. This dual approach ensures that the dataset remains both complete and statistically consistent, laying a solid foundation for subsequent model training.
 
----
 
-### Model Training and Evaluation
+
+**Model Training and Evaluation**
 
 **Dataset Splitting and Preparation**  
 To evaluate the model’s performance effectively, the dataset is split into distinct training and validation sets using random sampling. This ensures that the model is tested on data it has not seen during training, thereby providing an unbiased estimate of its performance.
@@ -34,9 +34,9 @@ The project utilizes advanced machine learning models from TensorFlow Decision F
 **Retraining on Full Data**  
 Once the best-performing model is identified, it is retrained using the full training dataset. This step ensures that the model leverages all available information before being applied to new, unseen data.
 
----
 
-### Test Data Processing and Prediction
+
+**Test Data Processing and Prediction**
 
 **Test Data Preparation**  
 The test dataset is loaded and processed in a manner similar to the training data. The unique identifier is set aside for future matching, and missing values are imputed using the same strategies employed during training. This consistency in data preparation guarantees that the model’s performance on the test data will be reflective of its true predictive power.
@@ -46,7 +46,7 @@ After converting the cleaned test dataset into a TensorFlow-compatible format, t
 
 ---
 
-### Conclusion
+**Conclusion**
 
 The project successfully demonstrates a robust methodology for predicting house sale prices. Key achievements include:
 
