@@ -1,5 +1,4 @@
 # Housing Market Analysis and Prediction
-Below is a full analysis of the project, presented in a descriptive format without any code snippets.
 
 ---
 
